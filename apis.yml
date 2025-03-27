@@ -41,3 +41,36 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
+common:
+  - name: Documentation | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/documentation
+    type: Documentation
+  - name: Documentation | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/documentation#security
+    type: Security
+  - name: Pricing | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/plans
+    type: Pricing
+  - name: Documentation | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/documentation#auth
+    type: Authentication
+  - name: Frequently Asked Questions | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/faq
+    type: FAQ
+  - name: Terms of Use | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/terms
+    type: TermsOfService
+  - name: Privacy Policy | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/privacy_policy
+    type: PrivacyPolicy
+  - name: Regions | Detect Language API
+    description: 'null'
+    url: https://detectlanguage.com/regions
+    type: Regions
