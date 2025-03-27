@@ -1,31 +1,43 @@
 aid: detect-language
-name: Detect Language
-description: >-
-  The language detection web service analyzes the provided text and returns the
-  identified language code along with a corresponding score. 
-type: Index
-position: Consumer
-access: 3rd-Party
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
-created: '2025-02-08'
-modified: '2025-02-08'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/detect-language/refs/heads/main/apis.yml
-specificationVersion: '0.19'
 apis:
   - aid: detect-language:detect-language
     name: Detect Language
-    description: >-
-      The language detection web service analyzes the provided text and returns
-      the identified language code along with a corresponding score. 
-    humanURL: ' https://detectlanguage.com/'
     tags:
-      - API
+      - Languages
+      - Translation
+      - Detection
+    humanURL: ' https://detectlanguage.com/'
     properties:
-      - type: Documentation
-        url: ' https://detectlanguage.com/'
+      - url: ' https://detectlanguage.com/'
+        type: Documentation
+    description: >-
+      The Detect Language API is a web service that identifies the language of a
+      given text with high accuracy, whether it's a long passage, short phrase,
+      or single word. It supports detection of 164 languages and offers fast
+      performance with low latency globally. The API also allows for batch
+      processing, maintains strong security and privacy standards, and is
+      available through both free and premium plans.
+name: Detect Language
+tags:
+  - Languages
+  - Translation
+  - Detection
+type: Contract
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+created: '2025-02-08'
+modified: '2025-03-27'
+position: Consuming
+description: >-
+  The Detect Language API is a web service that identifies the language of a
+  given text with high accuracy, whether it's a long passage, short phrase, or
+  single word. It supports detection of 164 languages and offers fast
+  performance with low latency globally. The API also allows for batch
+  processing, maintains strong security and privacy standards, and is available
+  through both free and premium plans.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+specificationVersion: '0.19'
