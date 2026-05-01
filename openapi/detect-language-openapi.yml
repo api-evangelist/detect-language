@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: Detect Language API
+  description: |
+    The Detect Language API identifies the language of a given text with high
+    accuracy, supporting 164 languages. It accepts single or batch detection
+    requests and returns confidence scores and reliability indicators.
+  version: '0.2'
+  contact:
+    name: Detect Language Support
+    url: https://detectlanguage.com/
+  license:
+    name: Proprietary
+    url: https://detectlanguage.com/terms
+servers:
+  - url: https://ws.detectlanguage.com/0.2
+    description: Production
+security:
+  - bearerAuth: []
+tags:
+  - name: Detection
+    description: Language detection endpoints
+  - name: Account
+    description: Account status and metadata
+  - name: Languages
+    description: Supported languages
+paths:
+  /detect:
+    post:
+      tags:
+        - Detection
+      summary: Detect language of text
+      description: |
+        Detects the language of a given text. The request body may contain a
+        single string under `q` or an array of strings for batch detection.
+      operationId: detectLanguage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectRequest'
+      responses:
+        '200':
+          description: Detection results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetectResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/status:
+    get:
+      tags:
+        - Account
+      summary: Get account status
+      description: Returns current account status, plan, usage, and limits.
+      operationId: getUserStatus
+      responses:
+        '200':
+          description: Account status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserStatus'
+  /languages:
+    get:
+      tags:
+        - Languages
+      summary: List supported languages
+      description: Returns the list of all languages supported by the API.
+      operationId: listLanguages
+      responses:
+        '200':
+          description: Supported languages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token using the API key issued in the Detect Language dashboard.
+  schemas:
+    DetectRequest:
+      type: object
+      required:
+        - q
+      properties:
+        q:
+          oneOf:
+            - type: string
+              description: Single text to detect
+            - type: array
+              items:
+                type: string
+              description: Batch of texts to detect
+    DetectResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            detections:
+              oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Detection'
+                - type: array
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Detection'
+    Detection:
+      type: object
+      properties:
+        language:
+          type: string
+          description: ISO 639-1 language code
+          example: en
+        isReliable:
+          type: boolean
+          description: Whether the detection is considered reliable
+        confidence:
+          type: number
+          format: float
+          description: Confidence score; can exceed 100
+    UserStatus:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        requests:
+          type: integer
+        bytes:
+          type: integer
+        plan:
+          type: string
+        plan_expires:
+          type: string
+          nullable: true
+        daily_requests_limit:
+          type: integer
+        daily_bytes_limit:
+          type: integer
+        status:
+          type: string
+    Language:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            code:
+              type: integer
