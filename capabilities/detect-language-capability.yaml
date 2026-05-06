@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Detect Language API
+  description: The Detect Language API identifies the language of a given text with high accuracy, supporting 164 languages.
+    It accepts single or batch detection requests and returns confidence scores and reliability indicators.
+  tags:
+  - Detect
+  - Language
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: detect-language
+    baseUri: https://ws.detectlanguage.com/0.2
+    description: Detect Language API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{DETECT_LANGUAGE_TOKEN}}'
+    resources:
+    - name: detect
+      path: /detect
+      operations:
+      - name: detectlanguage
+        method: POST
+        description: Detect language of text
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-status
+      path: /user/status
+      operations:
+      - name: getuserstatus
+        method: GET
+        description: Get account status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: languages
+      path: /languages
+      operations:
+      - name: listlanguages
+        method: GET
+        description: List supported languages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: detect-language-rest
+    description: REST adapter for Detect Language API.
+    resources:
+    - path: /detect
+      name: detectlanguage
+      operations:
+      - method: POST
+        name: detectlanguage
+        description: Detect language of text
+        call: detect-language.detectlanguage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /user/status
+      name: getuserstatus
+      operations:
+      - method: GET
+        name: getuserstatus
+        description: Get account status
+        call: detect-language.getuserstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /languages
+      name: listlanguages
+      operations:
+      - method: GET
+        name: listlanguages
+        description: List supported languages
+        call: detect-language.listlanguages
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: detect-language-mcp
+    transport: http
+    description: MCP adapter for Detect Language API for AI agent use.
+    tools:
+    - name: detectlanguage
+      description: Detect language of text
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: detect-language.detectlanguage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuserstatus
+      description: Get account status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: detect-language.getuserstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listlanguages
+      description: List supported languages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: detect-language.listlanguages
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    DETECT_LANGUAGE_TOKEN: DETECT_LANGUAGE_TOKEN
