@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Detect Language API — Languages
+  description: 'Detect Language API — Languages. 1 operations. Lead operation: List supported languages. Self-contained Naftiko
+    capability covering one Detect Language business surface.'
+  tags:
+  - Detect Language
+  - Languages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DETECT_LANGUAGE_API_KEY: DETECT_LANGUAGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: detect-language-languages
+    baseUri: https://ws.detectlanguage.com/0.2
+    description: Detect Language API — Languages business capability. Self-contained, no shared references.
+    resources:
+    - name: languages
+      path: /languages
+      operations:
+      - name: listlanguages
+        method: GET
+        description: List supported languages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.DETECT_LANGUAGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: detect-language-languages-rest
+    port: 8080
+    description: REST adapter for Detect Language API — Languages. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/languages
+      name: languages
+      description: REST surface for languages.
+      operations:
+      - method: GET
+        name: listlanguages
+        description: List supported languages
+        call: detect-language-languages.listlanguages
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: detect-language-languages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Detect Language API — Languages. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-supported-languages
+      description: List supported languages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: detect-language-languages.listlanguages
+      outputParameters:
+      - type: object
+        mapping: $.

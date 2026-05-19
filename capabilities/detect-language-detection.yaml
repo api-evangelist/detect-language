@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Detect Language API — Detection
+  description: 'Detect Language API — Detection. 1 operations. Lead operation: Detect language of text. Self-contained Naftiko
+    capability covering one Detect Language business surface.'
+  tags:
+  - Detect Language
+  - Detection
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DETECT_LANGUAGE_API_KEY: DETECT_LANGUAGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: detect-language-detection
+    baseUri: https://ws.detectlanguage.com/0.2
+    description: Detect Language API — Detection business capability. Self-contained, no shared references.
+    resources:
+    - name: detect
+      path: /detect
+      operations:
+      - name: detectlanguage
+        method: POST
+        description: Detect language of text
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.DETECT_LANGUAGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: detect-language-detection-rest
+    port: 8080
+    description: REST adapter for Detect Language API — Detection. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/detect
+      name: detect
+      description: REST surface for detect.
+      operations:
+      - method: POST
+        name: detectlanguage
+        description: Detect language of text
+        call: detect-language-detection.detectlanguage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: detect-language-detection-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Detect Language API — Detection. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: detect-language-text
+      description: Detect language of text
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: detect-language-detection.detectlanguage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
