@@ -4,28 +4,24 @@ apis:
   - aid: detect-language:detect-language
     name: Detect Language
     tags:
-    - Detection
-    - Languages
-    - Translation
+      - Detection
+      - Languages
+      - Translation
     humanURL: https://detectlanguage.com/
     baseURL: https://ws.detectlanguage.com/0.2
     properties:
-    - url: https://detectlanguage.com/
-      type: Documentation
-    - url: https://detectlanguage.com/documentation
-      type: API Documentation
-    - url: https://raw.githubusercontent.com/api-evangelist/detect-language/refs/heads/main/openapi/detect-language-openapi.yml
-      type: OpenAPI
-    - type: NaftikoCapability
-      url: capabilities/detect-language-account.yaml
-    - type: NaftikoCapability
-      url: capabilities/detect-language-detection.yaml
-    - type: NaftikoCapability
-      url: capabilities/detect-language-languages.yaml
-    description: The Detect Language API is a web service that identifies the language of a given text with high accuracy, whether
-      it's a long passage, short phrase, or single word. It supports detection of 164 languages and offers fast performance
-      with low latency globally. The API also allows for batch processing, maintains strong security and privacy standards,
-      and is available through both free and premium plans.
+      - url: https://detectlanguage.com/
+        type: Documentation
+      - url: https://detectlanguage.com/documentation
+        type: API Documentation
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/detect-language/refs/heads/main/openapi/detect-language-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Detect Language API is a web service that identifies the language of a given text with high accuracy, whether
+      it's a long passage, short phrase, or single word. It supports detection of 164 languages and offers fast
+      performance with low latency globally. The API also allows for batch processing, maintains strong security and
+      privacy standards, and is available through both free and premium plans.
 name: Detect Language
 tags:
   - Detection
@@ -37,10 +33,11 @@ access: 3rd-Party
 created: '2025-02-08'
 modified: '2026-05-19'
 position: Consuming
-description: The Detect Language API is a web service that identifies the language of a given text with high accuracy, whether
-  it's a long passage, short phrase, or single word. It supports detection of 164 languages and offers fast performance with
-  low latency globally. The API also allows for batch processing, maintains strong security and privacy standards, and is
-  available through both free and premium plans.
+description: >-
+  The Detect Language API is a web service that identifies the language of a given text with high accuracy, whether it's
+  a long passage, short phrase, or single word. It supports detection of 164 languages and offers fast performance with
+  low latency globally. The API also allows for batch processing, maintains strong security and privacy standards, and
+  is available through both free and premium plans.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
