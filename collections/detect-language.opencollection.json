@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Detect Language API",
+    "version": "0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Detect language of text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://ws.detectlanguage.com/0.2/detect",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Detects the language of a given text. The request body may contain a\nsingle string under `q` or an array of strings for batch detection.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ws.detectlanguage.com/0.2/user/status"
+          },
+          "docs": "Returns current account status, plan, usage, and limits."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ws.detectlanguage.com/0.2/languages"
+          },
+          "docs": "Returns the list of all languages supported by the API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

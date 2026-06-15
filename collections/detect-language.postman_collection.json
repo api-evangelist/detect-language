@@ -1,0 +1,371 @@
+{
+  "item": [
+    {
+      "id": "bdc42e35-4734-4545-880a-33dbacd0c9a5",
+      "name": "Detection",
+      "description": {
+        "content": "Language detection endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "41f12a85-c10f-4ffc-a7f8-0359c504f8a4",
+          "name": "Detect language of text",
+          "request": {
+            "name": "Detect language of text",
+            "description": {
+              "content": "Detects the language of a given text. The request body may contain a\nsingle string under `q` or an array of strings for batch detection.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "detect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"q\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e4fc002-f8d9-458d-98b7-b2e23dd30e41",
+              "name": "Detection results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"detections\": [\n      {\n        \"language\": \"en\",\n        \"isReliable\": true,\n        \"confidence\": 1184.3315825599932\n      },\n      {\n        \"language\": \"en\",\n        \"isReliable\": true,\n        \"confidence\": 7037.430022096561\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e6eaa27-4802-41f3-bacd-f617914bc797",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": 8404\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "24a8b0b1-5926-4668-9962-9559c972e0e3",
+      "name": "Account",
+      "description": {
+        "content": "Account status and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2de8eaac-eb55-4a42-ab5c-492a6ce6a8c7",
+          "name": "Get account status",
+          "request": {
+            "name": "Get account status",
+            "description": {
+              "content": "Returns current account status, plan, usage, and limits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0066474-05be-4cc3-b279-2ec72c183032",
+              "name": "Account status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"date\": \"1985-03-29\",\n  \"requests\": 997,\n  \"bytes\": 882,\n  \"plan\": \"string\",\n  \"plan_expires\": \"string\",\n  \"daily_requests_limit\": 9301,\n  \"daily_bytes_limit\": 4539,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ee90a731-201a-4ba0-9376-c5bea705e3b5",
+      "name": "Languages",
+      "description": {
+        "content": "Supported languages",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81993761-b7c8-471b-aea2-f178e6e72234",
+          "name": "List supported languages",
+          "request": {
+            "name": "List supported languages",
+            "description": {
+              "content": "Returns the list of all languages supported by the API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "languages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48ba79b0-1b06-4e8a-9d01-ab7a9688588a",
+              "name": "Supported languages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "languages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"code\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://ws.detectlanguage.com/0.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "63c696a0-bf2f-4385-bf96-c5239a0e7dfc",
+    "name": "Detect Language API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Detect Language API identifies the language of a given text with high\naccuracy, supporting 164 languages. It accepts single or batch detection\nrequests and returns confidence scores and reliability indicators.\n\n\nContact Support:\n Name: Detect Language Support",
+      "type": "text/plain"
+    }
+  }
+}
