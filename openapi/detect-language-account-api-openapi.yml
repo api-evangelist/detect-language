@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: Detect Language Account API
+  description: 'The Detect Language API identifies the language of a given text with high
+
+    accuracy, supporting 164 languages. It accepts single or batch detection
+
+    requests and returns confidence scores and reliability indicators.
+
+    '
+  version: '0.2'
+  contact:
+    name: Detect Language Support
+    url: https://detectlanguage.com/
+  license:
+    name: Proprietary
+    url: https://detectlanguage.com/terms
+servers:
+- url: https://ws.detectlanguage.com/0.2
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Account
+  description: Account status and metadata
+paths:
+  /user/status:
+    get:
+      tags:
+      - Account
+      summary: Get account status
+      description: Returns current account status, plan, usage, and limits.
+      operationId: getUserStatus
+      responses:
+        '200':
+          description: Account status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserStatus'
+components:
+  schemas:
+    UserStatus:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        requests:
+          type: integer
+        bytes:
+          type: integer
+        plan:
+          type: string
+        plan_expires:
+          type: string
+          nullable: true
+        daily_requests_limit:
+          type: integer
+        daily_bytes_limit:
+          type: integer
+        status:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token using the API key issued in the Detect Language dashboard.
