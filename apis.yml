@@ -1,34 +1,68 @@
 aid: detect-language
 url: https://raw.githubusercontent.com/api-evangelist/detect-language/refs/heads/main/apis.yml
 apis:
-  - aid: detect-language:detect-language
-    name: Detect Language
-    tags:
-      - Detection
-      - Languages
-      - Translation
-    humanURL: https://detectlanguage.com/
-    baseURL: https://ws.detectlanguage.com/0.2
-    properties:
-      - url: https://detectlanguage.com/
-        type: Documentation
-      - url: https://detectlanguage.com/documentation
-        type: API Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/detect-language/refs/heads/main/openapi/detect-language-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Detect Language API is a web service that identifies the language of a given text with high accuracy, whether
-      it's a long passage, short phrase, or single word. It supports detection of 164 languages and offers fast
-      performance with low latency globally. The API also allows for batch processing, maintains strong security and
-      privacy standards, and is available through both free and premium plans.
+- aid: detect-language:detect-language-account-api
+  name: Detect Language Account API
+  description: Account status and metadata
+  humanURL: https://detectlanguage.com/
+  baseURL: https://ws.detectlanguage.com/0.2
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/detect-language-account-api-openapi.yml
+  - type: Documentation
+    url: https://detectlanguage.com/
+  - type: API Documentation
+    url: https://detectlanguage.com/documentation
+- aid: detect-language:detect-language-detection-api
+  name: Detect Language Detection API
+  description: Language detection endpoints
+  humanURL: https://detectlanguage.com/
+  baseURL: https://ws.detectlanguage.com/0.2
+  tags:
+  - Detection
+  properties:
+  - type: OpenAPI
+    url: openapi/detect-language-detection-api-openapi.yml
+  - type: Documentation
+    url: https://detectlanguage.com/
+  - type: API Documentation
+    url: https://detectlanguage.com/documentation
+- aid: detect-language:detect-language-languages-api
+  name: Detect Language Languages API
+  description: Supported languages
+  humanURL: https://detectlanguage.com/
+  baseURL: https://ws.detectlanguage.com/0.2
+  tags:
+  - Languages
+  properties:
+  - type: OpenAPI
+    url: openapi/detect-language-languages-api-openapi.yml
+  - type: Documentation
+    url: https://detectlanguage.com/
+  - type: API Documentation
+    url: https://detectlanguage.com/documentation
 name: Detect Language
 tags:
   - Detection
   - Languages
   - Translation
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/detect-language.png
 access: 3rd-Party
 created: '2025-02-08'
 modified: '2026-05-19'
