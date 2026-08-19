@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Detect Language Account Detection API",
+    "version": "0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Detect language of text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://ws.detectlanguage.com/0.2/detect",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Detects the language of a given text. The request body may contain a\nsingle string under `q` or an array of strings for batch detection.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

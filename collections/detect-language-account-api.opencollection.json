@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Detect Language Account API",
+    "version": "0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ws.detectlanguage.com/0.2/user/status"
+          },
+          "docs": "Returns current account status, plan, usage, and limits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
